@@ -1,15 +1,17 @@
 package com.example.kakao.user;
 
+import com.example.kakao._core.errors.config.LoginCheck;
 import com.example.kakao._core.security.JWTProvider;
 import com.example.kakao._core.utils.ApiUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RequiredArgsConstructor
@@ -40,8 +42,8 @@ public class UserRestController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<?> loginForm(@RequestBody UserRequest.LoginDTO requestDTO, Errors errors) {
-        return ResponseEntity.ok(ApiUtils.success(null));
+    public ResponseEntity<?> loginForm() {
+        return ResponseEntity.ok(ApiUtils.error("아이디나 비밀번호가 잘못되었습니다.", HttpStatus.BAD_REQUEST));
     }
 
     // 로그아웃 사용안함 - 프론트에서 JWT 토큰을 브라우저의 localstorage에서 삭제하면 됨.
