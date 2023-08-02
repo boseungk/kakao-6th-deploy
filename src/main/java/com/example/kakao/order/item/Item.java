@@ -1,8 +1,11 @@
 package com.example.kakao.order.item;
 
-import com.example.kakao.product.option.Option;
 import com.example.kakao.order.Order;
-import lombok.*;
+import com.example.kakao.product.option.Option;
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
