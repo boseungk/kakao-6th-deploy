@@ -40,7 +40,7 @@ public class UserRestController {
     }
 
     @GetMapping("/login")
-    public ResponseEntity<?> loginForm(@RequestBody @Valid UserRequest.LoginDTO requestDTO, Errors errors) {
+    public ResponseEntity<?> loginForm(@RequestBody UserRequest.LoginDTO requestDTO, Errors errors) {
         return ResponseEntity.ok(ApiUtils.success(null));
     }
 
